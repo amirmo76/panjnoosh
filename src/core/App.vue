@@ -1,26 +1,36 @@
 <template>
   <div>
-    <Header></Header>
-    Panjnoosh
+    <TheHeader></TheHeader>
   </div>
 </template>
 
 <script>
-import Header from './Header';
+import TheHeader from "./components/TheHeader";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Header
+    TheHeader
   }
-}
+};
 </script>
 
-
 <style>
-  html {
-    box-sizing: border-box;
-    font-size: 62.5%; 
-    overflow-x: hidden;
-  }
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  overflow-x: hidden;
+  font-family: "IRANSans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
 </style>
