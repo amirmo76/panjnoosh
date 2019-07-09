@@ -1,6 +1,8 @@
 <template>
   <div :class="{header: true, light: light}">
-    <Logo :class="{logo: true, dark: light}"/>
+    <router-link class="logo-container" to="/">
+      <Logo :class="{logo: true, dark: light}" />
+    </router-link>
     <HeaderNavigation class="nav"></HeaderNavigation>
     <HeaderAccount class="account" :isLoggedIn="loggedIn" :avatar="'/assets/images/profile.png'"></HeaderAccount>
   </div>
@@ -49,6 +51,11 @@ export default {
 .header.light {
   background-color: #f7f7f8;
   color: #4c5e70;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
