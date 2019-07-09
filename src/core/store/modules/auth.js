@@ -8,8 +8,6 @@ const getters = {
   isLoggedIn: state => {
     if (!state.token) return false;
     const res = api.getUserInfo(state.token);
-    console.log("at res");
-    console.log(res);
     return res ? true : false;
   }
 };
