@@ -33,7 +33,7 @@ button {
   border: none;
   outline: none;
   min-width: 12.5rem;
-  padding: 1rem 1.5rem;
+  padding: 1.2rem 1.5rem;
   border-radius: 0.5rem;
   font-family: "IRANSans";
   font-size: 1.4rem;

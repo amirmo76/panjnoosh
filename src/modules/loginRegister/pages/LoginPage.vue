@@ -1,53 +1,65 @@
 <template>
-  <div class="container">
-    <form>
-      <BaseInput :type="'email'" @valueChange="onEmailChange">ایمیل</BaseInput>
-      <BaseInput :type="'password'" @valueChange="onPasswordChange">رمز عبور</BaseInput>
-      <BaseButton :stretched="true">ورود</BaseButton>
-    </form>
+  <div class="page-container">
+    <div class="image"></div>
+    <div class="left-box-container">
+      <h1>ورود | پنج نوش</h1>
+      <div class="form-and-text-container">
+        <LoginForm></LoginForm>
+        <LoginGreet></LoginGreet>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import BaseInput from "../../../core/components/BaseInput";
-import BaseButton from "../../../core/components/BaseButton";
+import LoginForm from "../components/LoginForm";
+import LoginGreet from "../components/LoginGreet";
 
 export default {
   name: "LoginPage",
-  data: {
-    email: "",
-    password: "",
-    emailError: "",
-    passwordError: ""
-  },
   components: {
-    BaseInput,
-    BaseButton
-  },
-  methods: {
-    onEmailChange: () => {},
-    onPasswordChange: () => {}
+    LoginForm,
+    LoginGreet
   }
 };
 </script>
 
 <style scoped>
-.container {
+.page-container {
   background: #1d1d1d;
-  /* min-height: 100vh; */
   display: flex;
-  flex-direction: column;
+  padding: 6rem 10rem;
+  flex-direction: row-reverse;
   align-items: center;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.image {
+  background-image: linear-gradient(to right bottom, #99943d, #99943d),
+    url("/assets/images/login.jpg");
+  background-blend-mode: darken;
+  box-shadow: 0.2rem 1rem 2rem rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  height: 65rem;
+  width: 30%;
 }
 
-form > *:not(:last-child) {
-  margin-bottom: 4rem;
+.left-box-container {
+  background-color: #151515;
+  box-shadow: 0.2rem 1rem 2rem rgba(0, 0, 0, 0.2);
+  transform: translateX(3rem);
+  width: 70%;
+  text-align: right;
+  color: #ebebeb;
+  padding: 4rem;
+}
+
+.form-and-text-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+h1 {
+  font-size: 2rem;
 }
 </style>
 

@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <input :type="type" @input="onInput" :class="{invalid: error}" />
-    <label :class="{ top: value.length }">
+  <div>
+    <input :type="type" @input="onInput" :class="{invalid: error}" :id="id">
+    <label :class="{ top: value.length }" :for="id">
       <slot></slot>
     </label>
     <span class="error" v-if="error">{{ error }}</span>
@@ -29,16 +29,21 @@ export default {
     },
     error: {
       type: String,
-      // default: "حروف فارسی وارد نکنید"
       default: ""
+    },
+    id: {
+      type: String,
+      required: true
     }
   }
 };
 </script>
 
 <style scoped>
-.container {
+div {
   position: relative;
+  display: flex;
+  width: 100%;
 }
 
 input {
@@ -49,9 +54,21 @@ input {
   font-size: 1.4rem;
   color: #ebebeb;
   direction: rtl;
-  padding: 1.5rem 2rem;
+  padding: 1.4rem 2rem;
   outline: none;
   transition: all 0.2s;
+  width: 100%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #ebebeb;
 }
 
 .invalid {
@@ -59,14 +76,14 @@ input {
 }
 
 input:focus + label {
-  top: 0;
+  top: -0.5rem;
   right: 0;
   font-size: 1.2rem;
   opacity: 0.85;
 }
 
 .top {
-  top: 0;
+  top: -0.5rem;
   right: 0;
   font-size: 1.2rem;
 }
@@ -77,9 +94,13 @@ label {
   opacity: 0.6;
   position: absolute;
   right: 0;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   transition: all 0.2s;
+}
+
+label:hover {
+  cursor: auto;
 }
 
 .error {
@@ -90,4 +111,3 @@ label {
   bottom: -2.7rem;
 }
 </style>
-

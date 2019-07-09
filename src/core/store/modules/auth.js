@@ -17,14 +17,22 @@ const actions = {
     commit("setToken", null);
     window.localStorage.removeItem("token");
   },
-  login: ({ commit }, email, password) => {
-    const { token, message } = api.login(email, password);
+  login: ({ commit }, credentials) => {
+    const { token, message } = api.login(credentials);
     if (token) {
       commit("setToken", token);
       // redirect
     } else {
       console.log(message);
       // show message
+    }
+  },
+  register(context, credentials) {
+    const result = api.register(credentials);
+    if (result) {
+      //do something
+    } else {
+      //do something
     }
   }
 };
