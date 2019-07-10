@@ -7,8 +7,8 @@ const state = {
 const getters = {
   isLoggedIn: state => {
     if (!state.token) return false;
-    const res = api.getUserInfo(state.token);
-    return res ? true : false;
+    const { authenticated } = api.getUserInfo(state.token);
+    return authenticated;
   }
 };
 
@@ -21,6 +21,7 @@ const actions = {
     const { token, message } = api.login(credentials);
     if (token) {
       commit("setToken", token);
+      console.log(`logged in with token: ${token}`);
       // redirect
     } else {
       console.log(message);
@@ -28,10 +29,12 @@ const actions = {
     }
   },
   register(context, credentials) {
-    const result = api.register(credentials);
-    if (result) {
+    const { successful, message } = api.register(credentials);
+    if (successful) {
+      console.log(message);
       //do something
     } else {
+      console.log(message);
       //do something
     }
   }

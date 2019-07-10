@@ -14,6 +14,7 @@
 <script>
 import BaseInput from "../../../core/components/BaseInput";
 import BaseButton from "../../../core/components/BaseButton";
+import { mapActions } from "vuex";
 
 export default {
   name: "LoginForm",
@@ -30,6 +31,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["login"]),
     onEmailChange(val) {
       const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       if (regex.test(val)) {
@@ -49,7 +51,10 @@ export default {
     },
     onSubmit(e) {
       e.preventDefault();
-      // login
+      this.login({
+        email: this.email,
+        password: this.password
+      });
     }
   }
 };
