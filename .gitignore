@@ -19,3 +19,11 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+#server
+server/files/vendor
+server/files/.idea
+server/filesHomestead.json
+server/filesHomestead.yaml
+server/files/.env
+
