@@ -1,7 +1,7 @@
 <template>
   <div :class="{header: true, light: light}">
     <router-link class="logo-container" to="/">
-      <Logo :class="{logo: true, dark: light}" />
+      <Logo :class="{logo: true, dark: light}"/>
     </router-link>
     <HeaderNavigation class="nav"></HeaderNavigation>
     <HeaderAccount class="account" :isLoggedIn="loggedIn" :avatar="'/assets/images/profile.png'"></HeaderAccount>

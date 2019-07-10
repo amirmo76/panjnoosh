@@ -1,12 +1,19 @@
 <template>
   <form @submit="onSubmit">
-    <BaseInput
-      :type="'text'"
-      :id="'name'"
-      @value-change="onNameChange"
-      :error="nameError"
-    >نام و نام خانوادگی</BaseInput>
-    <BaseInput :type="'email'" :id="'email'" @value-change="onEmailChange" :error="emailError">ایمیل</BaseInput>
+    <div class="input-group">
+      <BaseInput
+        :type="'text'"
+        :id="'name'"
+        @value-change="onNameChange"
+        :error="nameError"
+      >نام و نام خانوادگی</BaseInput>
+      <BaseInput
+        :type="'email'"
+        :id="'email'"
+        @value-change="onEmailChange"
+        :error="emailError"
+      >ایمیل</BaseInput>
+    </div>
     <BaseInput
       :type="'tel'"
       :id="'phone'"
@@ -25,18 +32,20 @@
       @value-change="onPostalCodeChange"
       :error="postalCodeError"
     >کد پستی</BaseInput>
-    <BaseInput
-      :type="'password'"
-      :id="'password'"
-      @value-change="onPasswordChange"
-      :error="passwordError"
-    >رمز عبور</BaseInput>
-    <BaseInput
-      :type="'password'"
-      :id="'password'"
-      @value-change="onPasswordConfirmationChange"
-      :error="passwordConfirmationError"
-    >تایید رمز عبور</BaseInput>
+    <div class="input-group">
+      <BaseInput
+        :type="'password'"
+        :id="'password'"
+        @value-change="onPasswordChange"
+        :error="passwordError"
+      >رمز عبور</BaseInput>
+      <BaseInput
+        :type="'password'"
+        :id="'password'"
+        @value-change="onPasswordConfirmationChange"
+        :error="passwordConfirmationError"
+      >تایید رمز عبور</BaseInput>
+    </div>
     <BaseButton class="button" :stretched="true">ثبت نام</BaseButton>
   </form>
 </template>
@@ -146,6 +155,19 @@ form > *:not(:last-child) {
 
 .button {
   margin-top: 2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.input-group > *:not(:last-child) {
+  margin-left: 1.5rem;
+}
+
+.input-group > *:not(:first-child) {
+  margin-right: 1.5rem;
 }
 </style>
 
