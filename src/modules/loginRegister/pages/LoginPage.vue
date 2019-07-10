@@ -5,7 +5,13 @@
       <h1>ورود | پنج نوش</h1>
       <div class="form-and-text-container">
         <LoginForm></LoginForm>
-        <LoginGreet></LoginGreet>
+        <div class="text">
+          <h3>خوش آمدید</h3>
+          <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+
+          <h3>توضیحاتی کوتاه</h3>
+          <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -13,13 +19,11 @@
 
 <script>
 import LoginForm from "../components/LoginForm";
-import LoginGreet from "../components/LoginGreet";
 
 export default {
   name: "LoginPage",
   components: {
-    LoginForm,
-    LoginGreet
+    LoginForm
   }
 };
 </script>
@@ -60,6 +64,25 @@ export default {
 
 h1 {
   font-size: 2rem;
+}
+
+.text {
+  max-width: 50%;
+  padding: 5rem 3.5rem;
+  margin-right: 1.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  font-size: 1.4rem;
+}
+
+p:not(:last-of-type) {
+  margin-bottom: 3rem;
 }
 </style>
 

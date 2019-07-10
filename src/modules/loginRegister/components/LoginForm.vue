@@ -64,7 +64,6 @@ export default {
 form {
   display: flex;
   flex-direction: column;
-  padding: 2.5rem;
   width: 50%;
   justify-content: center;
 }
