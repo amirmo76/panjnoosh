@@ -1,6 +1,6 @@
 .DS_Store
-front/node_modules
-front/distgit 
+node_modules
+distgit 
 
 # local env files
 .env.local
@@ -19,11 +19,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-
-#server
-server/vendor
-server/.idea
-server/Homestead.json
-server/Homestead.yaml
-server/.env
 
