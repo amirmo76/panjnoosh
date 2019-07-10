@@ -1,9 +1,9 @@
 <template>
   <form @submit="onSubmit">
-    <BaseInput :type="'email'" @valueChange="onEmailChange" :error="emailError" :id="'email'">ایمیل</BaseInput>
+    <BaseInput :type="'email'" @value-change="onEmailChange" :error="emailError" :id="'email'">ایمیل</BaseInput>
     <BaseInput
       :type="'password'"
-      @valueChange="onPasswordChange"
+      @value-change="onPasswordChange"
       :error="passwordError"
       :id="'password'"
     >رمز عبور</BaseInput>

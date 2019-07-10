@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<div
+  class="page-container"
+>
+  <div
+    class="image"
+  />
+   
+  <div
+    class="signup-container"
+  >
+    <h1>
+      ثبت نام | پنج نوش
+    </h1>
+     
+    <signupform-stub />
+  </div>
+</div>
+`;

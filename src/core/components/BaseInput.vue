@@ -19,7 +19,7 @@ export default {
   methods: {
     onInput(e) {
       this.value = e.target.value;
-      this.$emit("valueChange", this.value);
+      this.$emit("value-change", this.value);
     }
   },
   props: {

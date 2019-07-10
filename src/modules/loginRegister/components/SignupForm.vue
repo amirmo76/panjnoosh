@@ -3,38 +3,38 @@
     <BaseInput
       :type="'text'"
       :id="'name'"
-      @valueChange="onNameChange"
+      @value-change="onNameChange"
       :error="nameError"
     >نام و نام خانوادگی</BaseInput>
-    <BaseInput :type="'email'" :id="'email'" @valueChange="onEmailChange" :error="emailError">ایمیل</BaseInput>
+    <BaseInput :type="'email'" :id="'email'" @value-change="onEmailChange" :error="emailError">ایمیل</BaseInput>
     <BaseInput
       :type="'tel'"
       :id="'phone'"
-      @valueChange="onPhoneChange"
+      @value-change="onPhoneChange"
       :error="phoneError"
     >شماره همراه</BaseInput>
     <BaseInput
       :type="'text'"
       :id="'address'"
-      @valueChange="onAddressChange"
+      @value-change="onAddressChange"
       :error="addressError"
     >آدرس کامل</BaseInput>
     <BaseInput
       :type="'tel'"
       :id="'postalCode'"
-      @valueChange="onPostalCodeChange"
+      @value-change="onPostalCodeChange"
       :error="postalCodeError"
     >کد پستی</BaseInput>
     <BaseInput
       :type="'password'"
       :id="'password'"
-      @valueChange="onPasswordChange"
+      @value-change="onPasswordChange"
       :error="passwordError"
     >رمز عبور</BaseInput>
     <BaseInput
       :type="'password'"
       :id="'password'"
-      @valueChange="onPasswordConfirmationChange"
+      @value-change="onPasswordConfirmationChange"
       :error="passwordConfirmationError"
     >تایید رمز عبور</BaseInput>
     <BaseButton class="button" :stretched="true">ثبت نام</BaseButton>

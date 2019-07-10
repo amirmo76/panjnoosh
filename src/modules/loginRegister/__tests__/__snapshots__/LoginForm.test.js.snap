@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<form>
+  <baseinput-stub
+    error=""
+    id="email"
+    type="email"
+  >
+    ایمیل
+  </baseinput-stub>
+   
+  <baseinput-stub
+    error=""
+    id="password"
+    type="password"
+  >
+    رمز عبور
+  </baseinput-stub>
+   
+  <basebutton-stub
+    class="button"
+    stretched="true"
+    theme="primary"
+    title=""
+  >
+    ورود
+  </basebutton-stub>
+</form>
+`;
