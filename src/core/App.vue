@@ -1,7 +1,9 @@
 <template>
   <vue-custom-scrollbar class="scroll-area">
+    <!-- <v-app> -->
     <TheHeader></TheHeader>
     <router-view></router-view>
+    <!-- </v-app> -->
   </vue-custom-scrollbar>
 </template>
 

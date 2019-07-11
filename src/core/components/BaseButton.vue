@@ -1,5 +1,8 @@
 <template>
-  <button :class="[theme, {outlined: outlined} , {stretched: stretched}, {ripple: ripple}]">
+  <button
+    v-ripple
+    :class="[theme, {outlined: outlined} , {stretched: stretched}, {ripple: ripple}]"
+  >
     <slot></slot>
   </button>
 </template>
@@ -11,10 +14,6 @@ export default {
     theme: {
       type: String,
       default: "primary"
-    },
-    title: {
-      type: String,
-      default: ""
     },
     outlined: {
       type: Boolean,
@@ -37,7 +36,7 @@ button {
   border: none;
   outline: none;
   min-width: 12.5rem;
-  padding: 1.2rem 1.5rem;
+  padding: 1.1rem 2rem;
   border-radius: 0.5rem;
   font-family: "IRANSans";
   font-size: 1.4rem;
@@ -49,7 +48,7 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: #ffa000;
+  background-color: #ffca28;
 }
 
 .primary {
@@ -68,42 +67,5 @@ button:hover {
 
 .stretched {
   width: 100%;
-}
-
-@keyframes ripple {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 0.5;
-  }
-
-  100% {
-    width: 50rem;
-    height: 50rem;
-    opacity: 0;
-  }
-}
-
-.ripple:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background-color: currentColor;
-  visibility: hidden;
-  z-index: 2;
-}
-
-.ripple:not(:active):before {
-  animation: ripple 0.5s cubic-bezier(0, 0, 0.2, 1);
-  transition: visibility 0.4s step-end;
-}
-
-.ripple:active:before {
-  visibility: visible;
 }
 </style>

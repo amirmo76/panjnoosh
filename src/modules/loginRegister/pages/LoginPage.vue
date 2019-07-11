@@ -68,7 +68,7 @@ h1 {
 
 .text {
   max-width: 50%;
-  padding: 5rem 3.5rem;
+  padding: 3rem 2rem 3rem 0;
   margin-right: 1.5rem;
 }
 

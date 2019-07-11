@@ -17,16 +17,18 @@ const actions = {
     commit("setToken", null);
     window.localStorage.removeItem("token");
   },
-  login: ({ commit }, credentials) => {
-    const { token, message } = api.login(credentials);
-    if (token) {
-      commit("setToken", token);
-      console.log(`logged in with token: ${token}`);
-      // redirect
-    } else {
-      console.log(message);
-      // show message
-    }
+  login: (context, credentials) => {
+    api.login(credentials);
+    // const { token, message } = api.login(credentials);
+    // if (token) {
+    //   commit("setToken", token);
+    //   localStorage.setItem("token", token);
+    //   console.log(`logged in with token: ${token}`);
+    //   // redirect
+    // } else {
+    //   console.log(message);
+    //   // show message
+    // }
   },
   register(context, credentials) {
     const { successful, message } = api.register(credentials);

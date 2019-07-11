@@ -2,21 +2,25 @@
 
 exports[`should match snapshot 1`] = `
 <form>
-  <baseinput-stub
-    error=""
-    id="name"
-    type="text"
+  <div
+    class="input-group"
   >
-    نام و نام خانوادگی
-  </baseinput-stub>
-   
-  <baseinput-stub
-    error=""
-    id="email"
-    type="email"
-  >
-    ایمیل
-  </baseinput-stub>
+    <baseinput-stub
+      error=""
+      id="name"
+      type="text"
+    >
+      نام و نام خانوادگی
+    </baseinput-stub>
+     
+    <baseinput-stub
+      error=""
+      id="email"
+      type="email"
+    >
+      ایمیل
+    </baseinput-stub>
+  </div>
    
   <baseinput-stub
     error=""
@@ -42,24 +46,29 @@ exports[`should match snapshot 1`] = `
     کد پستی
   </baseinput-stub>
    
-  <baseinput-stub
-    error=""
-    id="password"
-    type="password"
+  <div
+    class="input-group"
   >
-    رمز عبور
-  </baseinput-stub>
-   
-  <baseinput-stub
-    error=""
-    id="password"
-    type="password"
-  >
-    تایید رمز عبور
-  </baseinput-stub>
+    <baseinput-stub
+      error=""
+      id="password"
+      type="password"
+    >
+      رمز عبور
+    </baseinput-stub>
+     
+    <baseinput-stub
+      error=""
+      id="password"
+      type="password"
+    >
+      تایید رمز عبور
+    </baseinput-stub>
+  </div>
    
   <basebutton-stub
     class="button"
+    ripple="true"
     stretched="true"
     theme="primary"
     title=""

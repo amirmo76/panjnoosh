@@ -21,9 +21,8 @@
           d="M129.375,150c-60.061,0-108.75,48.689-108.75,108.75h217.5C238.125,198.689,189.436,150,129.375,150z"
         ></path>
       </svg>
-      <router-link to="/signup" class="link">ثبت نام</router-link>
-      <span class="dash">-</span>
-      <router-link to="/login" class="link">ورود</router-link>
+      <router-link to="/signup" class="link" v-ripple>ثبت نام</router-link>
+      <router-link to="/login" class="link" v-ripple>ورود</router-link>
     </div>
   </div>
 </template>
@@ -53,19 +52,13 @@ export default {
   fill: #ebebeb;
   height: 1.8rem;
   width: 1.8rem;
-  margin-left: 1.5rem;
-}
-
-.dash {
-  margin: 0 1rem;
+  margin-left: 1rem;
 }
 
 .link {
+  padding: 1rem 1.5rem;
   transition: all 0.2s;
-}
-
-.link:hover {
-  color: #e6b31e;
+  display: block;
 }
 
 /* logged in */
