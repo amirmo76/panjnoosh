@@ -9,8 +9,8 @@
 
     <div v-else class="flex">
       <SignIcon class="sign-icon"></SignIcon>
-      <router-link to="/signup" class="link" v-ripple>ثبت نام</router-link>
-      <router-link to="/login" class="link" v-ripple>ورود</router-link>
+      <router-link to="/signup" class="link">ثبت نام</router-link>
+      <router-link to="/login" class="link">ورود</router-link>
     </div>
   </div>
 </template>

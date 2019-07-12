@@ -1,8 +1,5 @@
 <template>
-  <button
-    v-ripple
-    :class="[theme, {outlined: outlined} , {stretched: stretched}, {ripple: ripple}]"
-  >
+  <button :class="[theme, {outlined: outlined} , {stretched: stretched}]">
     <slot></slot>
   </button>
 </template>
@@ -22,10 +19,6 @@ export default {
     stretched: {
       type: Boolean,
       default: false
-    },
-    ripple: {
-      type: Boolean,
-      default: true
     }
   }
 };

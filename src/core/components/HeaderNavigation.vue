@@ -1,19 +1,19 @@
 <template>
   <ul>
     <li>
-      <router-link to="/shop" v-ripple class="link">فروشگاه</router-link>
+      <router-link to="/shop" class="link">فروشگاه</router-link>
     </li>
     <li>
-      <router-link to="/#special-offers" v-ripple class="link">پیشنهادات ویژه</router-link>
+      <router-link to="/#special-offers" class="link">پیشنهادات ویژه</router-link>
     </li>
     <li>
-      <router-link to="/blog" v-ripple class="link">بلاگ</router-link>
+      <router-link to="/blog" class="link">بلاگ</router-link>
     </li>
     <li>
-      <router-link to="/about" v-ripple class="link">درباره ما</router-link>
+      <router-link to="/about" class="link">درباره ما</router-link>
     </li>
     <li>
-      <router-link to="/contact" v-ripple class="link">ارتباط با ما</router-link>
+      <router-link to="/contact" class="link">ارتباط با ما</router-link>
     </li>
   </ul>
 </template>

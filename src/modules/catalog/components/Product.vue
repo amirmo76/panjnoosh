@@ -3,29 +3,21 @@
     <div class="thumbnail" :style="{ backgroundImage: `url(${product.thumbnail})` }">
       <p class="category">{{ product.category }}</p>
       <p class="short-desc">{{ product.shortDesc }}</p>
-      <BaseButton v-ripple class="button">توضیحات بیشتر</BaseButton>
+      <BaseButton class="button">توضیحات بیشتر</BaseButton>
     </div>
     <div class="info">
       <div class="header">
         <h3>{{ product.title }}</h3>
-        <v-tooltip left>
-          <template v-slot:activator="{ on }">
-            <SaleIcon class="sale-icon" v-if="product.off" v-on="on"></SaleIcon>
-          </template>
-          <span>{{product.off}}٪ تخفیف</span>
-        </v-tooltip>
+        <SaleIcon class="sale-icon" v-if="product.off"></SaleIcon>
+        <span>{{product.off}}٪ تخفیف</span>
       </div>
       <div class="footer">
         <p class="price">{{ getPrice | formatPrice }}</p>
         <p class="price-unit">تومان</p>
-        <v-tooltip right>
-          <template v-slot:activator="{ on }">
-            <div v-ripple class="cart-clickable-area">
-              <CartIcon class="cart-icon" v-on="on"></CartIcon>
-            </div>
-          </template>
-          <span>افزودن به سبد</span>
-        </v-tooltip>
+        <div class="cart-clickable-area">
+          <CartIcon class="cart-icon"></CartIcon>
+        </div>
+        <span>افزودن به سبد</span>
       </div>
     </div>
   </div>
