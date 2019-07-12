@@ -4,7 +4,7 @@
       <Logo :class="{logo: true, dark: light}"/>
     </router-link>
     <HeaderNavigation class="nav"></HeaderNavigation>
-    <HeaderAccount class="account" :isLoggedIn="loggedIn" :avatar="'/assets/images/profile.png'"></HeaderAccount>
+    <HeaderAccount class="account" :isLoggedIn="isLoggedIn" :avatar="'/assets/images/profile.png'"></HeaderAccount>
   </div>
 </template>
 
@@ -23,15 +23,11 @@ export default {
   },
   data() {
     return {
-      loggedIn: false,
       light: false
     };
   },
-  methods: {
+  computed: {
     ...mapGetters(["isLoggedIn"])
-  },
-  created() {
-    this.loggedIn = this.isLoggedIn();
   }
 };
 </script>

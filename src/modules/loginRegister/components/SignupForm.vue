@@ -53,6 +53,7 @@
 <script>
 import BaseInput from "../../../core/components/BaseInput";
 import BaseButton from "../../../core/components/BaseButton";
+import { mapActions } from "vuex";
 
 export default {
   name: "SignupForm",
@@ -79,9 +80,22 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["register"]),
     onSubmit(e) {
       e.preventDefault();
       // signup
+      console.log(this.password);
+      console.log(this.passwordConfirmation);
+
+      this.register({
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        address: this.address,
+        zipcode: this.postalCode,
+        password: this.password,
+        password_confirmation: this.passwordConfirmation
+      });
     },
     onNameChange(val) {
       const regex = /^[آ-ی ء چ]+$/;

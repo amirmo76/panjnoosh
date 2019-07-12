@@ -7,7 +7,8 @@
       :error="passwordError"
       :id="'password'"
     >رمز عبور</BaseInput>
-    <BaseButton :stretched="true" class="button">ورود</BaseButton>
+    <BaseButton :stretched="true" class="button" @click="onSubmit">ورود</BaseButton>
+    <!-- <v-btn color="primary" @click="onSubmit" class="button">ورود</v-btn> -->
   </form>
 </template>
 
@@ -73,7 +74,7 @@ form > *:not(:last-child) {
 }
 
 .button {
-  margin-top: 2rem;
+  color: #1d1d1d;
 }
 </style>
 

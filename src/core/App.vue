@@ -1,10 +1,8 @@
 <template>
-  <vue-custom-scrollbar class="scroll-area">
-    <!-- <v-app> -->
+  <div>
     <TheHeader></TheHeader>
     <router-view></router-view>
-    <!-- </v-app> -->
-  </vue-custom-scrollbar>
+  </div>
 </template>
 
 <script>
