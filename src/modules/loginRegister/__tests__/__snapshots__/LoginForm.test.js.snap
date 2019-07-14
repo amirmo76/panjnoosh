@@ -20,10 +20,8 @@ exports[`should match snapshot 1`] = `
    
   <basebutton-stub
     class="button"
-    ripple="true"
     stretched="true"
     theme="primary"
-    title=""
   >
     ورود
   </basebutton-stub>

@@ -1,4 +1,5 @@
 import request from "request";
+import { reject } from "q";
 
 const ROOT = "http://171.22.27.104/panjnoosh/public";
 
@@ -6,17 +7,18 @@ export default {
   // login interface
   // inputs: credential object containing { email, password }
   // output: {
+  // statusCode: respone status code
   // errors: object, its undefined when no error
   // token: string, undefined when error
   // userId: int, undefined when error
   // }
-  async login({ email, password }) {
+  login({ email, password }) {
     let result = {
       errors: undefined,
       token: undefined,
       userId: undefined
     };
-    await new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       request.post(
         `${ROOT}/auth/login`,
         {
@@ -24,17 +26,17 @@ export default {
         },
         function(err, httpResponse, body) {
           const response = JSON.parse(body);
+          result.statusCode = httpResponse.statusCode;
           result.errors = response.errors;
           if (response.data) {
             result.token = response.data.token;
             result.userId = response.data.userId;
+            resolve(result);
           }
-          resolve("done");
+          reject(result);
         }
       );
     });
-    console.log(result);
-    return result;
   },
   // register interface
   // inputs: credential object containing { email, password, phone, address, zipCode, password, password_confirmation }

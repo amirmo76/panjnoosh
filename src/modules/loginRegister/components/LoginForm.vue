@@ -7,15 +7,14 @@
       :error="passwordError"
       :id="'password'"
     >رمز عبور</BaseInput>
-    <BaseButton :stretched="true" class="button" @click="onSubmit">ورود</BaseButton>
-    <!-- <v-btn color="primary" @click="onSubmit" class="button">ورود</v-btn> -->
+    <q-btn outline size="16px" color="primary" text-color="primary" label="ورود" @click="onSubmit"/>
   </form>
 </template>
 
 <script>
 import BaseInput from "../../../core/components/BaseInput";
 import BaseButton from "../../../core/components/BaseButton";
-import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "LoginForm",
@@ -28,11 +27,11 @@ export default {
       email: "",
       password: "",
       emailError: "",
-      passwordError: ""
+      passwordError: "",
+      waitingForResponse: false
     };
   },
   methods: {
-    ...mapActions(["login"]),
     onEmailChange(val) {
       const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       if (regex.test(val)) {
@@ -50,12 +49,59 @@ export default {
         this.passwordError = "رمز عبور باید بیش از ۵ کاراکتر باشد";
       }
     },
-    onSubmit(e) {
+    async onSubmit(e) {
       e.preventDefault();
-      this.login({
-        email: this.email,
-        password: this.password
-      });
+      if (this.canSendLoginRequest) {
+        this.waitingForResponse = true;
+        this.$q.loadingBar.start();
+        await this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password
+        });
+        this.$q.loadingBar.stop();
+        this.waitingForResponse = false;
+        this.showCrrespondingNotif();
+      } else {
+        this.$q.notify({
+          message: "ورودی ها خود را کنترل کنید!",
+          icon: "warning",
+          color: "warning"
+        });
+      }
+    },
+    showCrrespondingNotif() {
+      if (this.authErrors) {
+        // not ok
+        this.$q.notify({
+          message: this.authErrors,
+          icon: "error",
+          color: "negative"
+        });
+        console.log("authing to undef");
+        this.$store.commit("setAuthErrors", undefined);
+        console.log(this.authErrors);
+      } else {
+        // ok
+        this.$q.notify({
+          message: "با موفقیت وارد شدید.",
+          icon: "thumb_up",
+          color: "positive"
+        });
+      }
+    }
+  },
+  computed: {
+    ...mapGetters(["authErrors"]),
+    canSendLoginRequest() {
+      return (
+        this.isFormFilled && this.areFormInputsValid && !this.waitingForResponse
+      );
+    },
+    areFormInputsValid() {
+      return this.emailError || this.passwordError ? false : true;
+    },
+    isFormFilled() {
+      return this.email && this.password ? true : false;
     }
   }
 };
@@ -67,14 +113,11 @@ form {
   flex-direction: column;
   width: 50%;
   justify-content: center;
+  padding: 5rem 0;
 }
 
 form > *:not(:last-child) {
   margin-bottom: 5rem;
-}
-
-.button {
-  color: #1d1d1d;
 }
 </style>
 

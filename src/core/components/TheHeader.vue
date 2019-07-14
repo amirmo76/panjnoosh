@@ -12,7 +12,7 @@
 import HeaderNavigation from "./HeaderNavigation";
 import HeaderAccount from "./HeaderAccount";
 import Logo from "../../../public/assets/svg/logo.svg";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Header",

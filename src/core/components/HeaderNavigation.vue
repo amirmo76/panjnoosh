@@ -1,19 +1,19 @@
 <template>
   <ul>
     <li>
-      <router-link to="/shop" class="link">فروشگاه</router-link>
+      <router-link to="/shop" class="link" v-ripple:white>فروشگاه</router-link>
     </li>
     <li>
-      <router-link to="/#special-offers" class="link">پیشنهادات ویژه</router-link>
+      <router-link to="/#special-offers" class="link" v-ripple:white>پیشنهادات ویژه</router-link>
     </li>
     <li>
-      <router-link to="/blog" class="link">بلاگ</router-link>
+      <router-link to="/blog" class="link" v-ripple:white>بلاگ</router-link>
     </li>
     <li>
-      <router-link to="/about" class="link">درباره ما</router-link>
+      <router-link to="/about" class="link" v-ripple:white>درباره ما</router-link>
     </li>
     <li>
-      <router-link to="/contact" class="link">ارتباط با ما</router-link>
+      <router-link to="/contact" class="link" v-ripple:white>ارتباط با ما</router-link>
     </li>
   </ul>
 </template>
@@ -34,12 +34,14 @@ li {
   transition: all 0.2s;
 }
 
-li:not(:last-of-type) {
-  /* margin-left: 3rem; */
-}
-
 .link {
   display: block;
   padding: 1rem 3rem;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.link:hover {
+  color: #e6b31e;
 }
 </style>

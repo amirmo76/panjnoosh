@@ -5,5 +5,16 @@ module.exports = {
     svgRule.uses.clear();
 
     svgRule.use("vue-svg-loader").loader("vue-svg-loader");
-  }
+  },
+
+  pluginOptions: {
+    quasar: {
+      rtlSupport: true,
+      treeShake: true
+    }
+  },
+
+  transpileDependencies: [
+    /[\\\/]node_modules[\\\/]quasar[\\\/]/
+  ]
 };

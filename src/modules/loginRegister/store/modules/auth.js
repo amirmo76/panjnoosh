@@ -2,14 +2,16 @@ import api from "../../services/api";
 
 const state = {
   token: window.localStorage.getItem("token"),
-  userId: window.localStorage.getItem("userId")
+  userId: window.localStorage.getItem("userId"),
+  authErrors: undefined
 };
 
 const getters = {
   isLoggedIn: state => {
     return state.token ? true : false;
   },
-  getUserId: state => state.userId
+  getUserId: state => state.userId,
+  authErrors: state => state.authErrors
 };
 
 const actions = {
@@ -20,16 +22,23 @@ const actions = {
     window.localStorage.removeItem("userId");
   },
   async login({ commit }, credentials) {
-    const { token, userId } = await api.login(credentials);
-    if (token) {
-      commit("setToken", token);
-      localStorage.setItem("token", token);
-      commit("setUserId", userId);
-      localStorage.setItem("userId", userId);
-      // redirect
-    } else {
-      // show message
-    }
+    await api
+      .login(credentials)
+      .then(response => {
+        const { token, userId } = response;
+        commit("setToken", token);
+        localStorage.setItem("token", token);
+        commit("setUserId", userId);
+        localStorage.setItem("userId", userId);
+      })
+      .catch(error => {
+        const { statusCode } = error;
+        if (statusCode === 400) {
+          commit("setAuthErrors", "ایمیل یا رمزعبور اشتباه می باشد!");
+        } else {
+          commit("setAuthErrors", "خطا در اتصال به سرور!");
+        }
+      });
   },
   async register(context, credentials) {
     const { errors } = await api.register(credentials);
@@ -47,7 +56,8 @@ const actions = {
 
 const mutations = {
   setToken: (state, token) => (state.token = token),
-  setUserId: (state, id) => (state.userId = id)
+  setUserId: (state, id) => (state.userId = id),
+  setAuthErrors: (state, errors) => (state.authErrors = errors)
 };
 
 export default { state, getters, actions, mutations };

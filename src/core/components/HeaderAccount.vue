@@ -9,8 +9,8 @@
 
     <div v-else class="flex">
       <SignIcon class="sign-icon"></SignIcon>
-      <router-link to="/signup" class="link">ثبت نام</router-link>
-      <router-link to="/login" class="link">ورود</router-link>
+      <router-link to="/signup" class="link" v-ripple:white>ثبت نام</router-link>
+      <router-link to="/login" class="link" v-ripple:white>ورود</router-link>
     </div>
   </div>
 </template>
@@ -18,7 +18,6 @@
 <script>
 import LogoutIcon from "../../../public/assets/svg/logout.svg";
 import SignIcon from "../../../public/assets/svg/account.svg";
-import { mapActions } from "vuex";
 
 export default {
   name: "HeaderAccount",
@@ -36,7 +35,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["logout"])
+    async logout() {
+      this.$q.loadingBar.start();
+      await this.$store.dispatch("logout");
+      this.$q.loadingBar.stop();
+    }
   }
 };
 </script>
@@ -56,6 +59,11 @@ export default {
   padding: 1rem 1.5rem;
   transition: all 0.2s;
   display: block;
+  position: relative;
+}
+
+.link:hover {
+  color: #e6b31e;
 }
 
 /* logged in */
