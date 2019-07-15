@@ -2,16 +2,14 @@ import api from "../../services/api";
 
 const state = {
   token: window.localStorage.getItem("token"),
-  userId: window.localStorage.getItem("userId"),
-  authErrors: undefined
+  userId: window.localStorage.getItem("userId")
 };
 
 const getters = {
   isLoggedIn: state => {
     return state.token ? true : false;
   },
-  getUserId: state => state.userId,
-  authErrors: state => state.authErrors
+  getUserId: state => state.userId
 };
 
 const actions = {
@@ -21,43 +19,51 @@ const actions = {
     commit("setUserId", null);
     window.localStorage.removeItem("userId");
   },
-  async login({ commit }, credentials) {
-    await api
-      .login(credentials)
-      .then(response => {
-        const { token, userId } = response;
-        commit("setToken", token);
-        localStorage.setItem("token", token);
-        commit("setUserId", userId);
-        localStorage.setItem("userId", userId);
-      })
-      .catch(error => {
-        const { statusCode } = error;
-        if (statusCode === 400) {
-          commit("setAuthErrors", "ایمیل یا رمزعبور اشتباه می باشد!");
-        } else {
-          commit("setAuthErrors", "خطا در اتصال به سرور!");
-        }
-      });
+  login({ commit }, credentials) {
+    return new Promise((resolve, reject) => {
+      api
+        .login(credentials)
+        .then(response => {
+          const { token, userId } = response.data.data;
+          commit("setToken", token);
+          localStorage.setItem("token", token);
+          commit("setUserId", userId);
+          localStorage.setItem("userId", userId);
+          resolve({ message: "با موفقیت وارد شدید" });
+        })
+        .catch(error => {
+          const { status } = error.response;
+          if (status === 400 || status === 404) {
+            reject({ message: "ایمیل یا رمزعبور اشتباه می باشد!" });
+          } else {
+            reject({ message: "خطا در اتصال به سرور! دقایقی دیگر تلاش کنید." });
+          }
+        });
+    });
   },
-  async register(context, credentials) {
-    const { errors } = await api.register(credentials);
-    if (errors) {
-      if (errors.email) {
-        console.log("ایمیل موجود می باشد");
-      } else {
-        console.log(
-          "خطا در اتصال به سرور. لطفا دقایقی دیگر دوباره امتحان کنید"
-        );
-      }
-    }
+  register(context, credentials) {
+    return new Promise((resolve, reject) => {
+      api
+        .register(credentials)
+        .then(() => {
+          resolve({ message: "ثبت نام با موفقیت انجام شد" });
+        })
+        .catch(error => {
+          const { status } = error.response;
+          console.log(status);
+          if (status === 400) {
+            reject({ message: "این ایمیل قبلا در سیستم ثبت شده است!" });
+          } else {
+            reject({ message: "خطا در اتصال به سرور! دقایقی دیگر تلاش کنید." });
+          }
+        });
+    });
   }
 };
 
 const mutations = {
   setToken: (state, token) => (state.token = token),
-  setUserId: (state, id) => (state.userId = id),
-  setAuthErrors: (state, errors) => (state.authErrors = errors)
+  setUserId: (state, id) => (state.userId = id)
 };
 
 export default { state, getters, actions, mutations };

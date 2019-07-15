@@ -5,11 +5,13 @@ export default {
   routes: [
     {
       path: "/login",
-      component: LoginPage
+      component: LoginPage,
+      name: "login"
     },
     {
-      path: '/signup',
-      component: SignupPage
+      path: "/signup",
+      component: SignupPage,
+      name: "login"
     }
   ]
 };

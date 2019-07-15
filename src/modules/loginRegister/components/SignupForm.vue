@@ -53,7 +53,7 @@
 <script>
 import BaseInput from "../../../core/components/BaseInput";
 import BaseButton from "../../../core/components/BaseButton";
-import { mapActions } from "vuex";
+import router from "../../../core/router";
 
 export default {
   name: "SignupForm",
@@ -76,26 +76,50 @@ export default {
       postalCode: "",
       postalCodeError: "",
       passwordError: "",
-      passwordConfirmationError: ""
+      passwordConfirmationError: "",
+      waitingForResponse: false
     };
   },
   methods: {
-    ...mapActions(["register"]),
-    onSubmit(e) {
+    async onSubmit(e) {
       e.preventDefault();
-      // signup
-      console.log(this.password);
-      console.log(this.passwordConfirmation);
-
-      this.register({
-        name: this.name,
-        email: this.email,
-        phone: this.phone,
-        address: this.address,
-        zipcode: this.postalCode,
-        password: this.password,
-        password_confirmation: this.passwordConfirmation
-      });
+      if (this.canSendRegisterRequest) {
+        this.waitingForResponse = true;
+        this.$q.loadingBar.start();
+        await this.$store
+          .dispatch("register", {
+            name: this.name,
+            email: this.email,
+            phone: this.phone,
+            address: this.address,
+            zipcode: this.postalCode,
+            password: this.password,
+            password_confirmation: this.passwordConfirmation
+          })
+          .then(response => {
+            this.$q.notify({
+              message: response.message,
+              icon: "thumb_up",
+              color: "positive"
+            });
+            router.push({ name: "login" });
+          })
+          .catch(error => {
+            this.$q.notify({
+              message: error.message,
+              icon: "error",
+              color: "negative"
+            });
+          });
+        this.waitingForResponse = true;
+        this.$q.loadingBar.start();
+      } else {
+        this.$q.notify({
+          message: "ورودی ها خود را کنترل کنید!",
+          icon: "warning",
+          color: "warning"
+        });
+      }
     },
     onNameChange(val) {
       const regex = /^[آ-ی ء چ]+$/;
@@ -157,6 +181,37 @@ export default {
         this.passwordConfirmationError =
           "رمز عبور وارد شده با قبلی تطابق ندارد";
       }
+    }
+  },
+  computed: {
+    canSendRegisterRequest() {
+      return !this.waitingForResponse &&
+        this.areFormInputsValid &&
+        this.isFormFilled
+        ? true
+        : false;
+    },
+    areFormInputsValid() {
+      return this.emailError ||
+        this.nameError ||
+        this.phoneError ||
+        this.addressError ||
+        this.postalCodeError ||
+        this.passwordError ||
+        this.passwordConfirmationError
+        ? false
+        : true;
+    },
+    isFormFilled() {
+      return this.email &&
+        this.name &&
+        this.phone &&
+        this.address &&
+        this.postalCode &&
+        this.password &&
+        this.passwordConfirmation
+        ? true
+        : false;
     }
   }
 };

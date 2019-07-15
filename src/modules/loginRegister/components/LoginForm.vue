@@ -7,14 +7,14 @@
       :error="passwordError"
       :id="'password'"
     >رمز عبور</BaseInput>
-    <q-btn outline size="16px" color="primary" text-color="primary" label="ورود" @click="onSubmit"/>
+    <q-btn outline size="16px" color="primary" text-color="primary" label="ورود" @click="onSubmit" />
   </form>
 </template>
 
 <script>
 import BaseInput from "../../../core/components/BaseInput";
 import BaseButton from "../../../core/components/BaseButton";
-import { mapGetters } from "vuex";
+import router from "../../../core/router";
 
 export default {
   name: "LoginForm",
@@ -54,13 +54,28 @@ export default {
       if (this.canSendLoginRequest) {
         this.waitingForResponse = true;
         this.$q.loadingBar.start();
-        await this.$store.dispatch("login", {
-          email: this.email,
-          password: this.password
-        });
+        await this.$store
+          .dispatch("login", {
+            email: this.email,
+            password: this.password
+          })
+          .then(response => {
+            this.$q.notify({
+              message: response.message,
+              icon: "thumb_up",
+              color: "positive"
+            });
+          })
+          .catch(error => {
+            this.$q.notify({
+              message: error.message,
+              icon: "error",
+              color: "negative"
+            });
+          });
         this.$q.loadingBar.stop();
         this.waitingForResponse = false;
-        this.showCrrespondingNotif();
+        router.push({ name: "home" });
       } else {
         this.$q.notify({
           message: "ورودی ها خود را کنترل کنید!",
@@ -68,34 +83,15 @@ export default {
           color: "warning"
         });
       }
-    },
-    showCrrespondingNotif() {
-      if (this.authErrors) {
-        // not ok
-        this.$q.notify({
-          message: this.authErrors,
-          icon: "error",
-          color: "negative"
-        });
-        console.log("authing to undef");
-        this.$store.commit("setAuthErrors", undefined);
-        console.log(this.authErrors);
-      } else {
-        // ok
-        this.$q.notify({
-          message: "با موفقیت وارد شدید.",
-          icon: "thumb_up",
-          color: "positive"
-        });
-      }
     }
   },
   computed: {
-    ...mapGetters(["authErrors"]),
     canSendLoginRequest() {
-      return (
-        this.isFormFilled && this.areFormInputsValid && !this.waitingForResponse
-      );
+      return this.isFormFilled &&
+        this.areFormInputsValid &&
+        !this.waitingForResponse
+        ? true
+        : false;
     },
     areFormInputsValid() {
       return this.emailError || this.passwordError ? false : true;
