@@ -2,9 +2,12 @@
   <div>
     <div v-if="isLoggedIn" class="flex">
       <router-link to="/dashboard">
-        <div class="avatar" :style="{ backgroundImage: `url(${avatar})` }"></div>
+        <q-avatar rounded v-ripple color="primary" size="50px" class="avatar">
+          <img :src="avatar" />
+        </q-avatar>
       </router-link>
-      <LogoutIcon class="logout" @click="logout"></LogoutIcon>
+      <q-btn flat round icon="shopping_cart" class="cart" />
+      <q-btn flat round icon="logout" class="logout" @click="logout" />
     </div>
 
     <div v-else class="flex">
@@ -68,20 +71,18 @@ export default {
 
 /* logged in */
 .avatar {
-  width: 5rem;
-  height: 5rem;
-  margin-left: 3rem;
-  border-radius: 50%;
-  background-color: #ebebeb;
-  background-size: cover;
-  background-position: center;
+  margin-left: 2.5rem;
+}
+
+.avatar:hover {
+  cursor: pointer;
+}
+
+.cart {
+  margin-left: 1.5rem;
 }
 
 .logout {
-  fill: currentColor;
-  width: 2.5rem;
-  height: 2.5rem;
-  transition: all 0.2s;
   transform: rotate(180deg);
 }
 

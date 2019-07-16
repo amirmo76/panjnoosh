@@ -4,13 +4,24 @@ import "../styles/quasar.styl";
 import "quasar/dist/quasar.ie.polyfills";
 import lang from "quasar/lang/en-us.js";
 import "@quasar/extras/material-icons/material-icons.css";
-import { Quasar, LoadingBar, Ripple, QBtn, Notify, QTooltip } from "quasar";
+import {
+  Quasar,
+  LoadingBar,
+  Ripple,
+  QBtn,
+  Notify,
+  QTooltip,
+  QAvatar,
+  QChip
+} from "quasar";
 
 Vue.use(Quasar, {
   config: {},
   components: {
     QBtn,
-    QTooltip
+    QTooltip,
+    QAvatar,
+    QChip
   },
   directives: {
     Ripple
