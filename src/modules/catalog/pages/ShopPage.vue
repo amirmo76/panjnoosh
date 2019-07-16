@@ -18,7 +18,7 @@ export default {
           shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
           thumbnail: "./assets/images/artisho.jpg",
           price: 12000,
-          off: 20
+          off: 10
         }
       ]
     };

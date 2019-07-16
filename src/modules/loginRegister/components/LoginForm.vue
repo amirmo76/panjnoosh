@@ -13,13 +13,11 @@
 
 <script>
 import BaseInput from "../../../core/components/BaseInput";
-import BaseButton from "../../../core/components/BaseButton";
 import router from "../../../core/router";
 
 export default {
   name: "LoginForm",
   components: {
-    BaseButton,
     BaseInput
   },
   data() {

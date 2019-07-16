@@ -3,28 +3,52 @@
     <div class="thumbnail" :style="{ backgroundImage: `url(${product.thumbnail})` }">
       <p class="category">{{ product.category }}</p>
       <p class="short-desc">{{ product.shortDesc }}</p>
-      <BaseButton class="button">توضیحات بیشتر</BaseButton>
+      <q-btn class="button" color="primary" text-color="accent" label="توضیحات بیشتر" />
     </div>
     <div class="info">
       <div class="header">
         <h3>{{ product.title }}</h3>
-        <SaleIcon class="sale-icon" v-if="product.off"></SaleIcon>
-        <span>{{product.off}}٪ تخفیف</span>
+        <SaleIcon class="sale-icon" v-if="product.off">
+          <q-tooltip
+            anchor="center left"
+            self="center right"
+            content-class="bg-dark"
+            :content-style="{fontSize: '12px', direction: 'rtl'}"
+            transition-show="fade"
+            transition-hide="fade"
+          >٪{{product.off}} تخفیف</q-tooltip>
+        </SaleIcon>
       </div>
       <div class="footer">
-        <p class="price">{{ getPrice | formatPrice }}</p>
-        <p class="price-unit">تومان</p>
-        <div class="cart-clickable-area">
-          <CartIcon class="cart-icon"></CartIcon>
+        <div class="price-container">
+          <q-tooltip
+            v-if="product.off"
+            anchor="center left"
+            self="center right"
+            content-class="bg-dark"
+            transition-show="fade"
+            transition-hide="fade"
+            :content-style="{textDecoration: 'line-through', fontSize: '12px', direction: 'rtl'}"
+          >{{product.price | formatPrice}} تومان</q-tooltip>
+          <p class="price">{{ getPrice | formatPrice }}</p>
+          <p class="price-unit">تومان</p>
         </div>
-        <span>افزودن به سبد</span>
+        <q-btn flat round icon="shopping_cart" class="cart" />
+        <q-tooltip
+          anchor="center right"
+          self="center left"
+          content-class="bg-dark"
+          content-style="font-size: 12px"
+          transition-show="fade"
+          transition-hide="fade"
+          target=".cart"
+        >افزودن به سبد</q-tooltip>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseButton from "../../../core/components/BaseButton";
 import CartIcon from "../../../../public/assets/svg/cart.svg";
 import SaleIcon from "../../../../public/assets/svg/sale.svg";
 import numeral from "numeral";
@@ -38,7 +62,6 @@ export default {
     }
   },
   components: {
-    BaseButton,
     CartIcon,
     SaleIcon
   },
@@ -103,7 +126,7 @@ export default {
 
 .category {
   align-self: end;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
   padding: 0.5rem;
   color: #ebebeb;
   font-weight: 300;
@@ -128,6 +151,7 @@ export default {
   opacity: 0;
   position: relative;
   z-index: 3;
+  font-weight: 300;
 }
 
 .info {
@@ -148,9 +172,8 @@ h3 {
 }
 
 .sale-icon {
-  fill: #ebebeb;
-  opacity: 0.4;
-  margin-right: 1rem;
+  fill: #e6b31e;
+  margin-right: 2rem;
   transition: all 0.2s;
 }
 
@@ -164,6 +187,11 @@ h3 {
   padding: 1rem 0;
 }
 
+.price-container {
+  display: flex;
+  align-items: center;
+}
+
 .price {
   font-size: 1.4rem;
 }
@@ -171,28 +199,10 @@ h3 {
 .price-unit {
   font-size: 1.4rem;
   margin-right: 0.5rem;
-  margin-left: auto;
 }
 
-.cart-icon {
-  fill: #ebebeb;
-  opacity: 0.4;
-  transition: all 0.2s;
-}
-
-.cart-clickable-area {
-  border-radius: 50%;
-  padding: 0.75rem;
-  display: flex;
-  align-items: center;
-}
-
-.cart-clickable-area:hover {
-  cursor: pointer;
-}
-
-.cart-clickable-area:hover .cart-icon {
-  opacity: 1;
+.cart {
+  margin-right: auto;
 }
 
 p {

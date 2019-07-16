@@ -59,14 +59,12 @@
 
 <script>
 import BaseInput from "../../../core/components/BaseInput";
-import BaseButton from "../../../core/components/BaseButton";
 import router from "../../../core/router";
 
 export default {
   name: "SignupForm",
   components: {
-    BaseInput,
-    BaseButton
+    BaseInput
   },
   data() {
     return {
