@@ -72,6 +72,7 @@ export default {
 /* logged in */
 .avatar {
   margin-left: 2.5rem;
+  position: relative;
 }
 
 .avatar:hover {

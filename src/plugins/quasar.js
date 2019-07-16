@@ -12,7 +12,20 @@ import {
   Notify,
   QTooltip,
   QAvatar,
-  QChip
+  QChip,
+  QInput,
+  QToolbar,
+  QDrawer,
+  QIcon,
+  QScrollArea,
+  QList,
+  QItem,
+  QItemSection,
+  QItemLabel,
+  QLayout,
+  QExpansionItem,
+  QMenu,
+  ClosePopup
 } from "quasar";
 
 Vue.use(Quasar, {
@@ -21,10 +34,23 @@ Vue.use(Quasar, {
     QBtn,
     QTooltip,
     QAvatar,
-    QChip
+    QChip,
+    QInput,
+    QToolbar,
+    QDrawer,
+    QIcon,
+    QScrollArea,
+    QList,
+    QItem,
+    QItemSection,
+    QItemLabel,
+    QLayout,
+    QExpansionItem,
+    QMenu
   },
   directives: {
-    Ripple
+    Ripple,
+    ClosePopup
   },
   plugins: {
     LoadingBar,

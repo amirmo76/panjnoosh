@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <q-layout>
     <TheHeader></TheHeader>
     <router-view></router-view>
-  </div>
+  </q-layout>
 </template>
 
 <script>

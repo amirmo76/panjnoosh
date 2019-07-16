@@ -11,7 +11,7 @@ export default {
     {
       path: "/signup",
       component: SignupPage,
-      name: "login"
+      name: "signup"
     }
   ]
 };

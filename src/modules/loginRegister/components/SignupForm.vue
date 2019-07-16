@@ -230,6 +230,7 @@ form > *:not(:last-child) {
 .button {
   margin-top: 2rem;
   width: 100%;
+  padding: 1rem 0;
 }
 
 .input-group {
