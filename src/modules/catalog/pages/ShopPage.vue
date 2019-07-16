@@ -2,8 +2,9 @@
   <div class="page-container">
     <div class="container">
       <ShopToolbar></ShopToolbar>
-      <div class="product-container">
-        <Product v-for="(product, i) in products" :key="i" :product="product"></Product>
+      <div class="shop-view">
+        <router-view></router-view>
+        <!-- <Product v-for="(product, i) in products" :key="i" :product="product"></Product> -->
       </div>
     </div>
   </div>
@@ -47,7 +48,7 @@ export default {
   box-shadow: 0.2rem 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
-.product-container {
+.shop-view {
   padding: 5rem;
   direction: rtl;
 }
