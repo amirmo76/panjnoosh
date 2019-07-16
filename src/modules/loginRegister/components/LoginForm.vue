@@ -65,6 +65,7 @@ export default {
               icon: "thumb_up",
               color: "positive"
             });
+            router.push({ name: "home" });
           })
           .catch(error => {
             this.$q.notify({
@@ -75,7 +76,6 @@ export default {
           });
         this.$q.loadingBar.stop();
         this.waitingForResponse = false;
-        router.push({ name: "home" });
       } else {
         this.$q.notify({
           message: "ورودی ها خود را کنترل کنید!",

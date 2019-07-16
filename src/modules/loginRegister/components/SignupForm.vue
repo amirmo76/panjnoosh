@@ -46,7 +46,14 @@
         :error="passwordConfirmationError"
       >تایید رمز عبور</BaseInput>
     </div>
-    <BaseButton class="button" :stretched="true">ثبت نام</BaseButton>
+    <q-btn
+      class="button"
+      outline
+      color="primary"
+      text-color="primary"
+      @click="onSubmit"
+      label="ثبت نام"
+    />
   </form>
 </template>
 
@@ -111,8 +118,8 @@ export default {
               color: "negative"
             });
           });
-        this.waitingForResponse = true;
-        this.$q.loadingBar.start();
+        this.waitingForResponse = false;
+        this.$q.loadingBar.stop();
       } else {
         this.$q.notify({
           message: "ورودی ها خود را کنترل کنید!",
@@ -224,6 +231,7 @@ form > *:not(:last-child) {
 
 .button {
   margin-top: 2rem;
+  width: 100%;
 }
 
 .input-group {
