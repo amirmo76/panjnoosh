@@ -1,8 +1,33 @@
 <template>
   <q-toolbar class="toolbar">
     <div v-if="allowMultipleViewStyle" class="view-style-container">
-      <q-btn v-if="isViewStyleGrid" round flat icon="view_agenda" @click="setViewStyleList" />
-      <q-btn v-else round flat icon="grid_on" @click="setViewStyleGrid" />
+      <q-btn
+        v-if="isViewStyleGrid"
+        round
+        flat
+        icon="view_list"
+        @click="setViewStyleList"
+        class="view-button"
+      >
+        <q-tooltip
+          anchor="bottom middle"
+          self="top middle"
+          content-class="bg-dark"
+          content-style="font-size: 12px"
+          transition-show="fade"
+          transition-hide="fade"
+        >نمایش به صورت لیست</q-tooltip>
+      </q-btn>
+      <q-btn v-else round flat icon="view_module" @click="setViewStyleGrid" class="view-button">
+        <q-tooltip
+          anchor="bottom middle"
+          self="top middle"
+          content-class="bg-dark"
+          content-style="font-size: 12px"
+          transition-show="fade"
+          transition-hide="fade"
+        >نمایش به صورت جدول</q-tooltip>
+      </q-btn>
     </div>
     <q-input
       dark
@@ -81,6 +106,10 @@ export default {
 
 .view-style-container {
   margin-right: 3rem;
+}
+
+.view-button {
+  transform: rotate(180deg);
 }
 </style>
 

@@ -1,11 +1,13 @@
 <template>
   <div class="all-product-page">
-    <ProductList :products="products"></ProductList>
+    <ProductList :products="filteredProducts"></ProductList>
   </div>
 </template>
 
 <script>
 import ProductList from "../components/ProductList";
+import { products } from "../data/dummies";
+import searchStrategy from "../services/search";
 
 export default {
   name: "AllProductPage",
@@ -14,17 +16,13 @@ export default {
   },
   data() {
     return {
-      products: [
-        {
-          title: "دمنوش آرتیشو",
-          category: "دمنوش گیاهی",
-          shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
-          thumbnail: "/assets/images/artisho.jpg",
-          price: 12000,
-          off: 10
-        }
-      ]
+      products: searchStrategy(products, this.$store.getters.getSearchValue)
     };
+  },
+  computed: {
+    filteredProducts() {
+      return searchStrategy(products, this.$store.getters.getSearchValue);
+    }
   }
 };
 </script>

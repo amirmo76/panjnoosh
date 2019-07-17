@@ -1,13 +1,17 @@
 <template>
-  <div class="product">
+  <div class="product" v-if="gridViewStyle">
     <div class="thumbnail" :style="{ backgroundImage: `url(${product.thumbnail})` }">
       <p class="category">{{ product.category }}</p>
       <p class="short-desc">{{ product.shortDesc }}</p>
-      <q-btn class="button" color="primary" text-color="accent" label="توضیحات بیشتر" />
+      <router-link :to="{name: 'product', params: {id: product.id}}">
+        <q-btn class="button" color="primary" text-color="accent" label="توضیحات بیشتر" />
+      </router-link>
     </div>
     <div class="info">
       <div class="header">
-        <h3>{{ product.title }}</h3>
+        <router-link :to="{name: 'product', params: {id: product.id}}">
+          <h3 v-ripple:white class="title">{{ product.title }}</h3>
+        </router-link>
         <SaleIcon class="sale-icon" v-if="product.off">
           <q-tooltip
             anchor="center left"
@@ -33,19 +37,56 @@
           <p class="price">{{ getPrice | formatPrice }}</p>
           <p class="price-unit">تومان</p>
         </div>
-        <q-btn flat round icon="shopping_cart" class="cart" tooltip="add-to-cart" />
+        <q-btn flat round icon="shopping_cart" class="cart">
+          <q-tooltip
+            anchor="center right"
+            self="center left"
+            content-class="bg-dark"
+            content-style="font-size: 12px"
+            transition-show="fade"
+            transition-hide="fade"
+          >افزودن به سبد</q-tooltip>
+        </q-btn>
+      </div>
+    </div>
+  </div>
+  <!-- LIST VIEW STYLE -->
+  <q-item v-else class="product--list">
+    <router-link :to="{name: 'product', params: {id: product.id}}">
+      <div
+        class="thumbnail--list"
+        v-ripple
+        :style="{ backgroundImage: `url(${product.thumbnail})` }"
+      ></div>
+    </router-link>
+    <div class="info--list">
+      <router-link :to="{name: 'product', params: {id: product.id}}">
+        <h3 class="title--list">{{product.title}}</h3>
+      </router-link>
+      <p class="short-desc--list">{{product.shortDesc}}</p>
+      <div class="price-container--list price-container--off" v-if="product.off">
+        <p class="price--list price-off--list">{{product.price | formatPrice}}</p>
+        <p class="price-unit--list">تومان</p>
+      </div>
+      <div class="price-container--list">
+        <p class="price--list">{{getPrice | formatPrice}}</p>
+        <p class="price-unit--list">تومان</p>
+      </div>
+    </div>
+    <div class="actions--list">
+      <q-btn rounded flat label="افزودن به سبد خرید" icon-right="shopping_cart" class="cart--list" />
+      <SaleIcon class="sale-icon--list" v-if="product.off">
         <q-tooltip
           anchor="center right"
           self="center left"
           content-class="bg-dark"
-          content-style="font-size: 12px"
+          :content-style="{fontSize: '12px', direction: 'rtl'}"
           transition-show="fade"
           transition-hide="fade"
-          target="[tooltip=add-to-cart]"
-        >افزودن به سبد</q-tooltip>
-      </div>
+        >٪{{product.off}} تخفیف</q-tooltip>
+      </SaleIcon>
     </div>
-  </div>
+  </q-item>
 </template>
 
 <script>
@@ -59,6 +100,10 @@ export default {
     product: {
       type: Object,
       required: true
+    },
+    gridViewStyle: {
+      type: Boolean,
+      default: true
     }
   },
   components: {
@@ -159,13 +204,21 @@ export default {
   direction: rtl;
 }
 
-h3 {
+.title {
   font-weight: 300;
   font-size: 1.8rem;
+  transition: all 0.2s;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.title:hover {
+  color: #e6b31e;
+  cursor: pointer;
 }
 
 .header {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   border-bottom: 1px solid #ebebeb;
   display: flex;
   align-items: center;
@@ -207,6 +260,91 @@ h3 {
 
 p {
   margin: 0;
+}
+
+/* List */
+
+.product--list {
+  color: #ebebeb;
+  align-items: center;
+  direction: rtl;
+  transition: all 0.2s;
+}
+
+.product--list:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.thumbnail--list {
+  width: 20rem;
+  height: 20rem;
+  position: relative;
+  border-radius: 0.5rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.info--list {
+  padding: 0 5rem;
+  margin-left: auto;
+}
+
+.actions--list {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.sale-icon--list {
+  margin-left: 2rem;
+  fill: #e6b31e;
+}
+
+.title--list {
+  font-size: 2.6rem;
+  font-weight: 300;
+  transition: all 0.2s;
+}
+
+.title--list:hover {
+  color: #e6b31e;
+  cursor: pointer;
+}
+
+.short-desc--list {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  opacity: 0.5;
+}
+
+.cart--list {
+  direction: ltr;
+}
+
+.price-container--list {
+  display: flex;
+  align-items: center;
+}
+
+.price-container--off {
+  color: #e6b31e;
+  opacity: 0.5;
+}
+
+.price-container--list:first-of-type {
+  margin-top: 1.5rem;
+}
+
+.price-container--list:not(:first-of-type) {
+  margin-top: 0.2rem;
+}
+
+.price-off--list {
+  text-decoration: line-through;
+}
+
+.price-unit--list {
+  margin-right: 1rem;
 }
 </style>
 

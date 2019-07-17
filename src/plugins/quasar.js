@@ -23,9 +23,9 @@ import {
   QItemSection,
   QItemLabel,
   QLayout,
-  QExpansionItem,
   QMenu,
-  ClosePopup
+  ClosePopup,
+  QSeparator
 } from "quasar";
 
 Vue.use(Quasar, {
@@ -45,8 +45,8 @@ Vue.use(Quasar, {
     QItemSection,
     QItemLabel,
     QLayout,
-    QExpansionItem,
-    QMenu
+    QMenu,
+    QSeparator
   },
   directives: {
     Ripple,

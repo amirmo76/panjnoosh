@@ -11,15 +11,18 @@ export default {
       children: [
         {
           path: "",
-          component: AllProductPage
+          component: AllProductPage,
+          name: "allProducts"
         },
         {
           path: "product/:id",
-          component: ProductPage
+          component: ProductPage,
+          name: "product"
         },
         {
           path: "category/:id",
-          component: CategoryPage
+          component: CategoryPage,
+          name: "category"
         }
       ]
     }
