@@ -33,7 +33,7 @@
           <p class="price">{{ getPrice | formatPrice }}</p>
           <p class="price-unit">تومان</p>
         </div>
-        <q-btn flat round icon="shopping_cart" class="cart" />
+        <q-btn flat round icon="shopping_cart" class="cart" tooltip="add-to-cart" />
         <q-tooltip
           anchor="center right"
           self="center left"
@@ -41,7 +41,7 @@
           content-style="font-size: 12px"
           transition-show="fade"
           transition-hide="fade"
-          target=".cart"
+          target="[tooltip=add-to-cart]"
         >افزودن به سبد</q-tooltip>
       </div>
     </div>
