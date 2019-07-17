@@ -1,6 +1,6 @@
 const state = {
   search: "",
-  viewStyle: "grid"
+  viewStyle: "list"
 };
 
 const getters = {

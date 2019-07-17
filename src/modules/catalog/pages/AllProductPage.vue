@@ -1,6 +1,6 @@
 <template>
   <div class="all-product-page">
-    <ProductList :products="filteredProducts"></ProductList>
+    <ProductList :products="products | searchStrategy($store.getters.getSearchValue)"></ProductList>
   </div>
 </template>
 
@@ -14,15 +14,13 @@ export default {
   components: {
     ProductList
   },
-  data() {
-    return {
-      products: searchStrategy(products, this.$store.getters.getSearchValue)
-    };
-  },
   computed: {
-    filteredProducts() {
-      return searchStrategy(products, this.$store.getters.getSearchValue);
+    products() {
+      return products;
     }
+  },
+  filters: {
+    searchStrategy
   }
 };
 </script>
