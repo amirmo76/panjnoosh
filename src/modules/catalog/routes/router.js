@@ -1,7 +1,7 @@
 import ShopPage from "../pages/ShopPage";
 import ProductPage from "../pages/ProductPage";
 import CategoryPage from "../pages/CategoryPage";
-import AllProductPage from "../pages/AllProductPage";
+import ShopHomePage from "../pages/ShopHomePage";
 
 export default {
   routes: [
@@ -11,7 +11,7 @@ export default {
       children: [
         {
           path: "",
-          component: AllProductPage,
+          component: ShopHomePage,
           name: "allProducts"
         },
         {

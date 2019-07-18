@@ -2,7 +2,10 @@ export const products = [
   {
     id: 1,
     title: "دمنوش آرتیشو",
-    category: "دمنوش گیاهی",
+    category: {
+      id: 1,
+      title: "دمنوش گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 32000,
@@ -11,7 +14,10 @@ export const products = [
   {
     id: 2,
     title: "دمنوش اکیناسه",
-    category: "دمنوش گیاهی",
+    category: {
+      id: 1,
+      title: "دمنوش گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 12000,
@@ -20,7 +26,10 @@ export const products = [
   {
     id: 3,
     title: "داروی گیاهی قند",
-    category: "داروی گیاهی",
+    category: {
+      id: 2,
+      title: "داروی گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 8500,
@@ -29,7 +38,10 @@ export const products = [
   {
     id: 4,
     title: "دمنوش کبد چرب",
-    category: "دمنوش گیاهی",
+    category: {
+      id: 1,
+      title: "دمنوش گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 15000,
@@ -38,7 +50,10 @@ export const products = [
   {
     id: 5,
     title: "چای سبز",
-    category: "دمنوش گیاهی",
+    category: {
+      id: 1,
+      title: "دمنوش گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 19000,
@@ -50,7 +65,10 @@ export const categoryOne = [
   {
     id: 1,
     title: "دمنوش آرتیشو",
-    category: "دمنوش گیاهی",
+    category: {
+      id: 1,
+      title: "دمنوش گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 32000,
@@ -59,7 +77,10 @@ export const categoryOne = [
   {
     id: 2,
     title: "دمنوش اکیناسه",
-    category: "دمنوش گیاهی",
+    category: {
+      id: 1,
+      title: "دمنوش گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 12000,
@@ -68,7 +89,10 @@ export const categoryOne = [
   {
     id: 4,
     title: "دمنوش کبد چرب",
-    category: "دمنوش گیاهی",
+    category: {
+      id: 1,
+      title: "دمنوش گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 15000,
@@ -77,7 +101,10 @@ export const categoryOne = [
   {
     id: 5,
     title: "چای سبز",
-    category: "دمنوش گیاهی",
+    category: {
+      id: 1,
+      title: "دمنوش گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 19000,
@@ -89,7 +116,10 @@ export const categoryTwo = [
   {
     id: 3,
     title: "داروی گیاهی قند",
-    category: "داروی گیاهی",
+    category: {
+      id: 2,
+      title: "داروی گیاهی"
+    },
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 8500,

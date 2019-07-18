@@ -3,7 +3,7 @@
     <div class="container">
       <ShopToolbar></ShopToolbar>
       <div class="shop-view">
-        <router-view></router-view>
+        <router-view :key="$route.fullPath"></router-view>
       </div>
     </div>
   </div>

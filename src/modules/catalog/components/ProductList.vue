@@ -40,6 +40,10 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(27rem, max-content));
 }
 
+.list {
+  width: 100%;
+}
+
 .seperator {
   margin: 2.5rem 0;
   margin-right: 20rem;

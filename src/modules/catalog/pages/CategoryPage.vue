@@ -14,14 +14,22 @@ export default {
   components: {
     ProductList
   },
-  computed: {
-    products() {
-      if (this.$route.params.id === "1") {
-        return categoryOne;
+  data() {
+    return {
+      products: []
+    };
+  },
+  methods: {
+    getProducts() {
+      if (this.$route.params.id == 1) {
+        this.products = categoryOne;
       } else {
-        return categoryTwo;
+        this.products = categoryTwo;
       }
     }
+  },
+  created() {
+    this.getProducts();
   },
   filters: {
     searchStrategy

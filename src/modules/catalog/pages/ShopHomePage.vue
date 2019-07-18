@@ -1,5 +1,6 @@
 <template>
   <div class="all-product-page">
+    <h2>همه محصولات</h2>
     <ProductList :products="products | searchStrategy($store.getters.getSearchValue)"></ProductList>
   </div>
 </template>
@@ -14,10 +15,10 @@ export default {
   components: {
     ProductList
   },
-  computed: {
-    products() {
-      return products;
-    }
+  data() {
+    return {
+      products: products
+    };
   },
   filters: {
     searchStrategy
@@ -26,5 +27,12 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  color: #ebebee;
+  font-weight: 200;
+  font-size: 3.5rem;
+  margin-bottom: 5rem;
+  margin-right: 1rem;
+}
 </style>
 
