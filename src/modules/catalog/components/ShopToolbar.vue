@@ -43,7 +43,13 @@
       </template>
     </q-input>
     <q-btn flat icon-right="menu" label="دسته بندی ها" class="category-button">
-      <q-menu anchor="top left" self="top right" fit>
+      <q-menu
+        :content-style="{backgroundColor: '#303030', width: '25rem', height: '50rem'}"
+        anchor="bottom left"
+        self="top right"
+        max-height="50rem"
+        :offset="[15,0]"
+      >
         <CategoryList :dark="false"></CategoryList>
       </q-menu>
     </q-btn>
@@ -62,7 +68,8 @@ export default {
   data() {
     return {
       allowMultipleViewStyle: true,
-      search: this.$store.getters.getSearchValue
+      search: this.$store.getters.getSearchValue,
+      categories: []
     };
   },
   methods: {

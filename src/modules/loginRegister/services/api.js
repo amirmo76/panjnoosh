@@ -1,9 +1,9 @@
 import axios from "axios";
-const ROOT = "http://171.22.27.104/panjnoosh/public";
+import { ROOT_ADDRESS } from "../../../core/config/config";
 
 export default {
   login({ email, password }) {
-    return axios.post(`${ROOT}/auth/login`, {
+    return axios.post(`${ROOT_ADDRESS}/auth/login`, {
       email,
       password
     });
@@ -17,7 +17,7 @@ export default {
     password,
     password_confirmation
   }) {
-    return axios.post(`${ROOT}/auth/register`, {
+    return axios.post(`${ROOT_ADDRESS}/auth/register`, {
       name,
       email,
       phone,

@@ -9,7 +9,7 @@ export const products = [
     shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
     thumbnail: "/assets/images/artisho.jpg",
     price: 32000,
-    off: 20
+    off: 50
   },
   {
     id: 2,
@@ -126,3 +126,17 @@ export const categoryTwo = [
     off: 0
   }
 ];
+
+export const product = {
+  id: 1,
+  title: "دمنوش آرتیشو",
+  category: {
+    id: 1,
+    title: "دمنوش گیاهی"
+  },
+  shortDesc: "توضیحاتی کوتاه از دمنوش آرتیشو در اینجا قرار می گیرد",
+  thumbnail: "/assets/images/artisho.jpg",
+  pictures: [],
+  price: 32000,
+  off: 20
+};

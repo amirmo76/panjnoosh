@@ -3,8 +3,23 @@
 </template>
 
 <script>
+import { product } from "../data/dummies";
+
 export default {
-  name: "ProductPage"
+  name: "ProductPage",
+  data() {
+    return {
+      product: {}
+    };
+  },
+  methods: {
+    getProduct() {
+      this.product = product;
+    }
+  },
+  created() {
+    this.getProduct();
+  }
 };
 </script>
 
